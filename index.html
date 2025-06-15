@@ -8,8 +8,9 @@
     body {
       margin: 0;
       background: black;
-      overflow: hidden;
       font-family: monospace;
+      color: pink;
+      overflow-x: hidden;
     }
 
     canvas {
@@ -20,15 +21,12 @@
     }
 
     .contenido {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: pink;
+      position: relative;
       z-index: 1;
-      padding: 1em;
-      max-width: 90vw;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em 1em;
+      text-align: center;
     }
 
     h1 {
@@ -79,18 +77,19 @@
     
     <div id="mensaje">Te quiero mucho 💗</div>
     <div id="extra" style="display:none; margin-top: 20px;">
-      <p style="font-size: 1.2em;">¿Qué prefieres ahora?</p>
+      <p style="font-size: 1.4em;">¿Qué prefieres ahora?</p>
       <button onclick="opcionExtra('hablar')">solucionar hablando 💬</button>
       <button onclick="opcionExtra('valorant')">jugar al Valorant 🎮</button>
       <button onclick="opcionExtra('mezcla')">hablar jugando a valorant 🎧🎮</button>
 
-      <p id="respuestaExtra" style="margin-top: 15px; font-size: 1em; color: #ffd9ec;"></p>
+      <p id="respuestaExtra" style="margin-top: 15px; font-size: 1.2em; color: #ffd9ec;"></p>
     </div>
   </div>
 
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     ctx.fillStyle = "black";
@@ -189,3 +188,4 @@
   </script>
 </body>
 </html>
+
