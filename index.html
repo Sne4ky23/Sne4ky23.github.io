@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lo siento amor</title>
   <style>
     body {
@@ -26,10 +27,12 @@
       text-align: center;
       color: pink;
       z-index: 1;
+      padding: 1em;
+      max-width: 90vw;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2em;
       margin-bottom: 20px;
       color: #ff99cc;
       text-shadow: 0 0 10px #ff66cc;
@@ -45,6 +48,7 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       box-shadow: 0 0 10px #ff99cc;
+      margin: 5px;
     }
 
     button:hover {
@@ -53,7 +57,7 @@
 
     #mensaje {
       margin-top: 30px;
-      font-size: 1.8em;
+      font-size: 1.5em;
       color: #ffe6f0;
       opacity: 0;
       transition: opacity 2s ease;
@@ -75,27 +79,22 @@
     
     <div id="mensaje">Te quiero mucho 💗</div>
     <div id="extra" style="display:none; margin-top: 20px;">
-      <p style="font-size: 1.4em;">¿Qué prefieres ahora?</p>
+      <p style="font-size: 1.2em;">¿Qué prefieres ahora?</p>
       <button onclick="opcionExtra('hablar')">solucionar hablando 💬</button>
       <button onclick="opcionExtra('valorant')">jugar al Valorant 🎮</button>
-<button onclick="opcionExtra('mezcla')">hablar jugando a valorant 🎧🎮</button>
+      <button onclick="opcionExtra('mezcla')">hablar jugando a valorant 🎧🎮</button>
 
-      <p id="respuestaExtra" style="margin-top: 15px; font-size: 1.2em; color: #ffd9ec;"></p>
+      <p id="respuestaExtra" style="margin-top: 15px; font-size: 1em; color: #ffd9ec;"></p>
     </div>
   </div>
 
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
-
-    // ajustar tamaño del canvas
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-
-ctx.fillStyle = "black";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const letras = "teamo".split("");
     const fontSize = 16;
@@ -103,11 +102,9 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
     const drops = Array(columnas).fill(1);
 
     function draw() {
-      // fondo semitransparente negro
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // texto rosado
       ctx.fillStyle = "#ff66cc";
       ctx.font = fontSize + "px monospace";
 
@@ -150,60 +147,45 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
     }
 
-    // Redimensionar si cambia el tamaño de la ventana
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-
-
-ctx.fillStyle = "black";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     });
-  
-canvas.addEventListener("click", function(event) {
-  explosion(event.clientX, event.clientY);
-});
-canvas.addEventListener("touchstart", function(event) {
-  const touch = event.touches[0];
-  explosion(touch.clientX, touch.clientY);
-});
 
-function explosion(x, y) {
-  const letrasExplosion = ["💞", "perdóname"];
-  for (let i = 0; i < 8; i++) {
-    const span = document.createElement("span");
-    span.textContent = letrasExplosion[Math.floor(Math.random() * letrasExplosion.length)];
-    span.style.position = "fixed";
-    span.style.left = (x + (Math.random() * 60 - 30)) + "px";
-    span.style.top = (y + (Math.random() * 60 - 30)) + "px";
-    span.style.color = "#ff99cc";
-    span.style.fontSize = "20px";
-    span.style.opacity = 1;
-    span.style.pointerEvents = "none";
-    span.style.transition = "all 1s ease-out";
-    document.body.appendChild(span);
-    setTimeout(() => {
-      span.style.transform = "scale(2)";
-      span.style.opacity = 0;
-    }, 10);
-    setTimeout(() => {
-      document.body.removeChild(span);
-    }, 1100);
-  }
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Web Sne4ky23</title>
-</head>
-<body style="font-family:sans-serif;text-align:center;padding-top:40px;">
-  <h1>🚀 ¡Bienvenido a mi página!</h1>
-  <p>Esto ya no es un README. Ahora estás viendo HTML real funcionando en GitHub Pages.</p>
-</body>
-</html>
-}
+    canvas.addEventListener("click", function(event) {
+      explosion(event.clientX, event.clientY);
+    });
 
-</script>
+    canvas.addEventListener("touchstart", function(event) {
+      const touch = event.touches[0];
+      explosion(touch.clientX, touch.clientY);
+    });
+
+    function explosion(x, y) {
+      const letrasExplosion = ["💞", "perdóname"];
+      for (let i = 0; i < 8; i++) {
+        const span = document.createElement("span");
+        span.textContent = letrasExplosion[Math.floor(Math.random() * letrasExplosion.length)];
+        span.style.position = "fixed";
+        span.style.left = (x + (Math.random() * 60 - 30)) + "px";
+        span.style.top = (y + (Math.random() * 60 - 30)) + "px";
+        span.style.color = "#ff99cc";
+        span.style.fontSize = "20px";
+        span.style.opacity = 1;
+        span.style.pointerEvents = "none";
+        span.style.transition = "all 1s ease-out";
+        document.body.appendChild(span);
+        setTimeout(() => {
+          span.style.transform = "scale(2)";
+          span.style.opacity = 0;
+        }, 10);
+        setTimeout(() => {
+          document.body.removeChild(span);
+        }, 1100);
+      }
+    }
+  </script>
 </body>
 </html>
